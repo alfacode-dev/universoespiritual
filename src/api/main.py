@@ -4,6 +4,10 @@ from sqlmodel import SQLModel
 
 from .routes import router
 from src.db import engine
+from src.logging_config import configure_logging
+
+
+configure_logging()
 
 
 @asynccontextmanager
@@ -13,7 +17,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="UniversoEspiritual API", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="UniversoEspiritual API", version="0.2.0", lifespan=lifespan)
 
 app.include_router(router, prefix="/api")
 
