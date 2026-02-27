@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from sqlmodel import SQLModel
 
@@ -5,15 +6,16 @@ from .routes import router
 from src.db import engine
 
 
-app = FastAPI(title="UniversoEspiritual API", version="0.1.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Create database tables on startup
+    SQLModel.metadata.create_all(engine)
+    yield
+
+
+app = FastAPI(title="UniversoEspiritual API", version="0.1.0", lifespan=lifespan)
 
 app.include_router(router, prefix="/api")
-
-
-@app.on_event("startup")
-def on_startup():
-    # Create database tables
-    SQLModel.metadata.create_all(engine)
 
 
 if __name__ == "__main__":
