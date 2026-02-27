@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 from fastapi import FastAPI
 from sqlmodel import SQLModel
 
@@ -22,8 +23,12 @@ app = FastAPI(title="UniversoEspiritual API", version="0.2.0", lifespan=lifespan
 
 app.include_router(router, prefix="/api")
 
-# Serve the simple frontend preview at /app
-app.mount("/app", StaticFiles(directory="src/frontend", html=True), name="frontend")
+# Prefer serving a production build if present at `frontend/dist`, otherwise fall back to the simple preview in `src/frontend`.
+frontend_prod = Path("frontend/dist")
+if frontend_prod.exists():
+    app.mount("/", StaticFiles(directory=str(frontend_prod), html=True), name="frontend")
+else:
+    app.mount("/app", StaticFiles(directory="src/frontend", html=True), name="frontend")
 
 
 if __name__ == "__main__":
