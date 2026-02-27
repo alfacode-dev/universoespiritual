@@ -53,3 +53,15 @@ uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Then open http://127.0.0.1:8000/docs for the interactive API docs.
+
+Run with Docker
+---------------
+
+Build and start the app with Docker Compose:
+
+```bash
+docker compose build
+docker compose up
+```
+
+The API will be available at http://127.0.0.1:8000 and the docs at /docs.
