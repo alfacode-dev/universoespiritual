@@ -1,4 +1,19 @@
 version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: universoespiritual:0.2.0
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///universo.db
+      - UNIVERSO_API_TOKEN=${UNIVERSO_API_TOKEN:-}
+    volumes:
+      - ./universo.db:/app/universo.db
+    restart: unless-stopped
+version: '3.8'
 
 services:
   web:
