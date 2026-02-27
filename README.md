@@ -1,5 +1,7 @@
 # UniversoEspiritual
 
+[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+
 Scaffold for the UniversoEspiritual project.
 
 This is an initial project created by GitHub Copilot. It contains a minimal Python CLI in `src/main.py`.
