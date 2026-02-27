@@ -1,6 +1,6 @@
 # UniversoEspiritual
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/alfacode-dev/universoespiritual/actions/workflows/ci.yml/badge.svg)](https://github.com/alfacode-dev/universoespiritual/actions/workflows/ci.yml)
 
 Scaffold for the UniversoEspiritual project.
 
