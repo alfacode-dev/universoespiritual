@@ -65,3 +65,25 @@ docker compose up
 ```
 
 The API will be available at http://127.0.0.1:8000 and the docs at /docs.
+
+Production with Docker
+----------------------
+
+Build the production image and run with Docker Compose (no volume mounts):
+
+```bash
+docker compose -f docker-compose.prod.yml build
+docker compose -f docker-compose.prod.yml up -d
+```
+
+Check logs with:
+
+```bash
+docker compose -f docker-compose.prod.yml logs -f
+```
+
+To stop and remove containers:
+
+```bash
+docker compose -f docker-compose.prod.yml down
+```
