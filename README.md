@@ -72,6 +72,22 @@ export UNIVERSO_API_TOKEN=secrettoken
 curl -H "Authorization: Bearer $UNIVERSO_API_TOKEN" -X POST http://127.0.0.1:8000/api/items -d '{"name":"X"}' -H 'Content-Type: application/json'
 ```
 
+Frontend (React) preview
+-------------------------
+
+I've scaffolded a small React + Vite frontend in the `frontend/` folder. To run it locally you need Node.js (>=16) and npm or yarn installed.
+
+Install and run dev server:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+By default the frontend proxies to `/api` on the same host (use the backend running at http://127.0.0.1:8000). You can set `VITE_API_BASE` in `.env` to point to a different API base URL.
+
+
 Then open http://127.0.0.1:8000/docs for the interactive API docs.
 
 Run with Docker
