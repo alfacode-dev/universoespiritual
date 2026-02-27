@@ -42,3 +42,14 @@ What's next
 - Choose a framework (FastAPI/Flask for backend, React/Vue for frontend), or I can add tests and CI.
 
 Tell me which direction you'd like to take and I'll continue scaffolding.
+ 
+Run the FastAPI app
+-------------------
+
+After installing dependencies (`pip install -r requirements.txt`) you can start the development server with:
+
+```bash
+uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Then open http://127.0.0.1:8000/docs for the interactive API docs.
