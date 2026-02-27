@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: install (frontend)",
+      "type": "shell",
+      "command": "npm ci",
+      "options": {"cwd": "${workspaceFolder}/frontend"},
+      "problemMatcher": []
+    },
+    {
+      "label": "npm: dev (frontend)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {"cwd": "${workspaceFolder}/frontend"},
+      "isBackground": true,
+      "presentation": {"reveal": "always", "panel": "shared"},
+      "problemMatcher": []
+    },
+    {
+      "label": "build+copy frontend (for backend preview)",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/build_and_copy.sh",
+      "isBackground": false,
+      "presentation": {"reveal": "always", "panel": "shared"},
+      "problemMatcher": []
+    }
+  ]
+}
