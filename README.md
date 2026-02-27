@@ -4,19 +4,41 @@ Scaffold for the UniversoEspiritual project.
 
 This is an initial project created by GitHub Copilot. It contains a minimal Python CLI in `src/main.py`.
 
+Author
+------
+
+Roberto Navarro
+
 Quick start
 
-1. Create a virtual environment (optional):
+1. Create a virtual environment (recommended):
 
-   python3 -m venv .venv
-   source .venv/bin/activate
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-2. Install deps (if any):
+2. Install dependencies (if any):
 
-   pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
-3. Run:
+3. Run the CLI:
 
-   python -m src.main
+```bash
+python -m src.main
+# show version
+python -m src.main --version
+```
 
-Tell me which language or framework you prefer and I will continue scaffolding.
+License
+-------
+
+This project is available under the MIT License — see the `LICENSE` file.
+
+What's next
+
+- Choose a framework (FastAPI/Flask for backend, React/Vue for frontend), or I can add tests and CI.
+
+Tell me which direction you'd like to take and I'll continue scaffolding.
