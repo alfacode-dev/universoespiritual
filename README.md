@@ -104,6 +104,26 @@ Notes:
 
 If you don't set `DATABASE_URL`, the app will use a local sqlite file `universo.db` for development.
 
+Setting `DATABASE_URL` locally (example)
+---------------------------------------
+
+Create a `.env` file from the provided example and set your connection string (do NOT commit `.env`):
+
+```bash
+cp .env.example .env
+# edit .env and set the real password (or paste the full URL-encoded string)
+```
+
+Or export directly in your shell (example using URL-encoded password):
+
+```bash
+export DATABASE_URL='mssql+pyodbc://sa:%24ys112177%23@alfacode.com.mx:1432/alfacodeuniversoactivo?driver=ODBC+Driver+17+for+SQL+Server'
+export UNIVERSO_API_TOKEN='your_token_here'
+.venv/bin/uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+```
+
+Warning: the password in the example is URL-encoded; if you paste a password containing special characters (e.g., `#`, `$`, `?`, `@`) you must URL-encode them (e.g. `#` -> `%23`, `$` -> `%24`). Rotate credentials if they were shared inadvertently.
+
 
 Then open http://127.0.0.1:8000/docs for the interactive API docs.
 
