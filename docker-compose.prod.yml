@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   web:
     build:
@@ -8,20 +9,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///universo.db
+      # Set your SQL Server DATABASE_URL in the environment when deploying, e.g.:
+      # mssql+pyodbc://USER:PASSWORD@HOST:1433/DATABASE?driver=ODBC+Driver+17+for+SQL+Server
+      - DATABASE_URL=${DATABASE_URL}
       - UNIVERSO_API_TOKEN=${UNIVERSO_API_TOKEN:-}
-    volumes:
-      - ./universo.db:/app/universo.db
     restart: unless-stopped
-version: '3.8'
-
-services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    ports:
-      - "8000:8000"
-    restart: unless-stopped
-    environment:
-      - PYTHONUNBUFFERED=1

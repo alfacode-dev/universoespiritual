@@ -87,6 +87,23 @@ npm run dev
 
 By default the frontend proxies to `/api` on the same host (use the backend running at http://127.0.0.1:8000). You can set `VITE_API_BASE` in `.env` to point to a different API base URL.
 
+Using SQL Server in production
+-----------------------------
+
+This project can use any SQL database supported by SQLAlchemy/SQLModel. To use Microsoft SQL Server in production, set the `DATABASE_URL` environment variable to a SQLAlchemy URL. Example format (ODBC driver 17):
+
+```
+DATABASE_URL="mssql+pyodbc://USER:PASSWORD@HOST:1433/DATABASE?driver=ODBC+Driver+17+for+SQL+Server"
+```
+
+Notes:
+- You must install the `pyodbc` Python package (already in `requirements.txt`).
+- The target host must have a suitable ODBC driver installed (e.g., `ODBC Driver 17 for SQL Server`). On Linux you may need `unixodbc` and the Microsoft ODBC driver; on macOS install the Microsoft ODBC driver via Homebrew. See https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server
+- When deploying with Docker or on your host, set `DATABASE_URL` in the environment (see `docker-compose.prod.yml` and `Procfile`).
+- Alembic migrations will use `DATABASE_URL` when provided.
+
+If you don't set `DATABASE_URL`, the app will use a local sqlite file `universo.db` for development.
+
 
 Then open http://127.0.0.1:8000/docs for the interactive API docs.
 
