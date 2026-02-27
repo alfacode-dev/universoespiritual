@@ -5,6 +5,7 @@ from sqlmodel import SQLModel
 from .routes import router
 from src.db import engine
 from src.logging_config import configure_logging
+from fastapi.staticfiles import StaticFiles
 
 
 configure_logging()
@@ -20,6 +21,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="UniversoEspiritual API", version="0.2.0", lifespan=lifespan)
 
 app.include_router(router, prefix="/api")
+
+# Serve the simple frontend preview at /app
+app.mount("/app", StaticFiles(directory="src/frontend", html=True), name="frontend")
 
 
 if __name__ == "__main__":

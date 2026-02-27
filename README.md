@@ -46,12 +46,30 @@ What's next
 Tell me which direction you'd like to take and I'll continue scaffolding.
  
 Run the FastAPI app
--------------------
 
 After installing dependencies (`pip install -r requirements.txt`) you can start the development server with:
 
 ```bash
 uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
+```
+API endpoints (high level):
+
+- `POST /api/users` — create a user (body: `username`, `full_name`).
+- `GET /api/users` — list users.
+- `GET /api/items` — list items. Supports query params: `q` (search name), `limit`, `offset`.
+- `POST /api/items` — create item (protected by token when `UNIVERSO_API_TOKEN` is set). Body: `name`, `description`, `owner_id`.
+- `PUT /api/items/{id}` — update item (protected).
+- `DELETE /api/items/{id}` — delete item (protected).
+
+Token usage:
+
+Set environment variable `UNIVERSO_API_TOKEN` to enable token-based protection. Provide header `Authorization: Bearer <token>` when making write requests.
+
+Example (bash):
+
+```bash
+export UNIVERSO_API_TOKEN=secrettoken
+curl -H "Authorization: Bearer $UNIVERSO_API_TOKEN" -X POST http://127.0.0.1:8000/api/items -d '{"name":"X"}' -H 'Content-Type: application/json'
 ```
 
 Then open http://127.0.0.1:8000/docs for the interactive API docs.
